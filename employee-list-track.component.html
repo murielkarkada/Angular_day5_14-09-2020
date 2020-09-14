@@ -1,0 +1,21 @@
+<div style='color:red '>This is using the TrackBy.Only the new records are refreshed</div>
+<table border="2">
+    <tr><th>SL.no</th><th>Empno</th><th>Name</th><th>Salary</th><th>DOB</th><th>E/O</th></tr>
+    <tr *ngFor ="let emp of employees;trackBy:trackByEmpno
+                 let i=index;
+                 let isFirst=first;
+                 let isLast=last;
+                 let iseven=even;
+                 let isodd=odd;" >
+         <td>{{i+1}}</td>        
+        <td>{{emp.empno}}</td>
+        <td>{{emp.name}}</td>
+        <td>{{emp.salary}}</td>
+        <td>{{emp.dob}}</td>
+        <td [style.color]="iseven?'green':'red'">{{iseven?'Even':'Odd'}}</td>
+    </tr>
+    <tr *ngIf = "!employees|| employees.length==0">
+        <td colspan=5>No employees to Display </td>
+    </tr>
+</table>
+<button (click)='getEmployees()'>REFRESH</button>
